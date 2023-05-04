@@ -1,7 +1,2 @@
-import streamlit as st
-import pandas as pd
-import altair as alt
-import base64
-import folium
-import math
-from streamlit_folium import folium_static
+folium
+streamlit_folium
