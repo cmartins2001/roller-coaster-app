@@ -200,10 +200,10 @@ def main():
                       "after your selected year:", ('Before', 'After'))
     avg_height = get_avg_height(main_df, state, before, year)
     if math.isnan(avg_height):
-        st.subheader(f"There were :red[no] roller coasters in :blue[{state}]{' before' if before else ' after'} {year}.")
+        st.subheader(f"There were :red[no] roller coasters in :blue[{state}]{' before' if before == 'Before' else ' after'} {year}.")
     else:
         st.subheader(
-            f"The average roller coaster height for :blue[{state}]{' before' if before else ' after'} {year} "
+            f"The average roller coaster height for :blue[{state}]{' before' if before == 'Before' else ' after'} {year} "
             f"is :green[{avg_height:.2f}] feet.")
     st.title("Select a year and create a pie chart showing the percentage "
              "of American roller coasters by construction type:")
