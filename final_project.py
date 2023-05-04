@@ -177,7 +177,6 @@ def main():
         )
     st.write(f'\n\n\n')
     # start of functions output:
-    st.divider()
     st.title("American Roller Coasters:")
     tab1, tab2 = st.tabs(["Map", "Raw Data"])
     tab1.subheader("Map of U.S. Roller Coasters")
@@ -187,14 +186,12 @@ def main():
         year_df = st.slider("Filter the dataset to before the year of your choice:", min_value=int(main_df['Year_Opened'].min()),
                             max_value=int(main_df['Year_Opened'].max()), key="key1")
         raw_data(main_df, year_df)
-    st.divider()
     st.title("Histograms of Roller Coaster Specs for Different Time Periods:")
     year_range = st.radio("Choose a time period you'd like to know more about:", ((1915, 1950), (1951, 1995),
                                                                                   (1996, 2016)))
     coaster_spec = st.radio("Choose the roller coaster spec you want to know more "
                             "about:", ('Top Speed, MPH', 'Maximum Drop, ft', 'Length, ft', 'Ride Duration, seconds'))
     spec_histogram(main_df, year_range, coaster_spec)
-    st.divider()
     st.title("Select a state and year and see what its average roller coaster height was before or after that year:")
     state = st.selectbox("Select a state:", main_df['State'].unique(), key="first_time")
     year = st.slider("Select a year:", min_value=int(main_df['Year_Opened'].min()),
@@ -208,22 +205,18 @@ def main():
         st.subheader(
             f"The average roller coaster height for :blue[{state}]{' before' if before else ' after'} {year} "
             f"is :green[{avg_height:.2f}] feet.")
-    st.divider()
     st.title("Select a year and create a pie chart showing the percentage "
              "of American roller coasters by construction type:")
     year = st.slider("Select a year:", min_value=int(main_df['Year_Opened'].min()),
                      max_value=int(main_df['Year_Opened'].max()), key="second_time")
     material_pie_chart(main_df, year)
-    st.divider()
     st.title("Select a state and see its fastest or slowest roller coaster:")
     state = st.selectbox("Select a state:", main_df['State'].unique(), key="third_time")
     fastest = st.radio(f"Choose whether you'd like to see the fastest or slowest top speed in "
                        f"{state}:", ('Fastest', 'Slowest'))
     fastest_or_slowest(main_df, fastest, state)
-    st.divider()
     st.title("Speed, Track Length, and Ride Duration Scattered:")
     scatter_specs(main_df)
-    st.divider()
     _left, mid, _right = st.columns(3)
     with mid:
         st.subheader("Thank You!")
